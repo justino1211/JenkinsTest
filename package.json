@@ -1,0 +1,15 @@
+{
+    "name": "playwright-jenkins-framework",
+    "version": "1.0.0",
+    "description": "Simple Playwright automation run",
+    "main": "index.js",
+    "scripts": {
+        "test": "npx playwright test --headed",
+        "test:pc": "npx playwright test tests/PC/policyCenterRegression.spec.js",
+        "test:headed": "npx playwright test --headed",
+        "test:report": "npx playwright show-report"
+    },
+    "devDependencies": {
+        "@playwright/test": "^1.45.0"
+    }
+}
