@@ -35,13 +35,17 @@ pipeline {
     }
 
     post {
-        always {
-            echo 'Archiving Playwright results...'
+    always {
+        publishHTML(target: [
+            reportDir: 'playwright-report',
+            reportFiles: 'index.html',
+            reportName: 'Playwright HTML Report',
+            keepAll: true,
+            alwaysLinkToLastBuild: true,
+            allowMissing: true
+        ])
 
-            archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
-            archiveArtifacts artifacts: 'test-results/**', allowEmptyArchive: true
-
-            echo 'Finished Jenkins Playwright run.'
-        }
+        archiveArtifacts artifacts: 'playwright-report/**, test-results/**', allowEmptyArchive: true
     }
+}
 }
